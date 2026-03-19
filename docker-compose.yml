@@ -1,0 +1,21 @@
+services:
+
+  inner-circle-invoices-api:
+    container_name: inner-circle-invoices-api
+    profiles:
+      - MockForTests
+      - MockForPullRequest
+    build:
+      dockerfile: ./Api/Dockerfile
+      context: .
+      args:
+        EXCLUDE_UNIT_TESTS_FROM_BUILD: "true"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=MockForPullRequest
+    ports:
+      - 6508:80
+    networks:
+      - inner-circle-invoices-api-network
+
+networks:
+  inner-circle-invoices-api-network:

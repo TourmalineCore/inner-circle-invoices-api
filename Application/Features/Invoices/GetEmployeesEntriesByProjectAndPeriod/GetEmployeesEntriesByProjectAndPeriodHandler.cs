@@ -1,23 +1,18 @@
 using Application.ExternalDeps.EmployeesApi;
 using Application.ExternalDeps.TimeApi;
-using Core.Entities;
-using static Application.ExternalDeps.TimeApi.TimeGetEmployeesEntriesResponse;
 
-namespace Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
+namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 public class GetEmployeesEntriesByProjectAndPeriodHandler
 {
     private readonly GetEmployeesEntriesByProjectAndPeriodQuery _getEmployeesEntriesByProjectAndPeriodQuery;
-    private readonly ITimeApi _timeApi;
     private readonly IEmployeesApi _employeesApi;
 
     public GetEmployeesEntriesByProjectAndPeriodHandler(
-        ITimeApi timeApi,
         IEmployeesApi employeesApi,
         GetEmployeesEntriesByProjectAndPeriodQuery getEmployeesEntriesByProjectAndPeriodQuery
     )
     {
-        _timeApi = timeApi;
         _employeesApi = employeesApi;
         _getEmployeesEntriesByProjectAndPeriodQuery = getEmployeesEntriesByProjectAndPeriodQuery;
     }

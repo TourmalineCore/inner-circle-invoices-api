@@ -17,8 +17,6 @@ public static class DependencyInjection
 
         services.AddScoped<IClaimsProvider, HttpContextClaimsProvider>();
 
-        //services.AddTransient<CreateTaskEntryHandler>();
-
         services.Configure<ExternalDepsUrls>(configuration.GetSection(nameof(ExternalDepsUrls)));
 
         services.AddTransient<ITimeApi, TimeApi>();

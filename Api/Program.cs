@@ -56,18 +56,8 @@ public class Program
 
         app.AddOpenApiSchemaAndUI();
 
-        // MigrateDatabase(app.Services);
-
         app.MapControllers();
 
         app.Run();
     }
-
-    // private static void MigrateDatabase(IServiceProvider serviceProvider)
-    // {
-    //     using var serviceScope = serviceProvider.CreateScope();
-
-    //     var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //     context.Database.Migrate();
-    // }
 }

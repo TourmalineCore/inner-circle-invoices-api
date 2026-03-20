@@ -1,6 +1,6 @@
 ﻿using Application.ExternalDeps.TimeApi;
 
-namespace Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
+namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 public class GetEmployeesEntriesByProjectAndPeriodQuery
 {

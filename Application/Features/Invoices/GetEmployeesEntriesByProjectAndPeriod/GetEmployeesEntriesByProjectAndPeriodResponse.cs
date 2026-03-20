@@ -1,4 +1,4 @@
-namespace Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
+namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 public class GetEmployeesEntriesByProjectAndPeriodResponse
 {

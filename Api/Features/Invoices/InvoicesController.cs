@@ -20,10 +20,10 @@ public class TrackingController : ControllerBase
         [FromServices] ITimeApi timeApi
     )
     {
-        var projects = await timeApi.GetAllProjects();
+        var projectsResponse = await timeApi.GetAllProjects();
         return new TimeGetProjectsResponse
         {
-            Projects = projects.Projects
+            Projects = projectsResponse.Projects
         };
     }
 

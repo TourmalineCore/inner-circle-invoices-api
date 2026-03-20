@@ -47,7 +47,8 @@ public class TimeApi : ITimeApi
 
     public async Task<TimeGetEmployeesEntriesResponse> GetAllEmployeesEntries(long projectId, string month, string year)
     {
-
+        // This is needed to automatically increment month
+        // If we increment month manually, that is month+1, then in case of December(12), it will be incremented from 12 to 13
         var startDate = DateTime.Parse($"{year}-{month}-01T00:00:00");
 
         var endDate = startDate.AddMonths(1);

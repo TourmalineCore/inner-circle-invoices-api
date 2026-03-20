@@ -1,6 +1,9 @@
-﻿using Api.ExternalDeps.TimeApi;
+﻿using Api.ExternalDeps.EmployeesApi;
+using Api.ExternalDeps.TimeApi;
 using Application;
+using Application.ExternalDeps.EmployeesApi;
 using Application.ExternalDeps.TimeApi;
+using Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
 
 namespace Api;
 
@@ -19,5 +22,9 @@ public static class DependencyInjection
         services.Configure<ExternalDepsUrls>(configuration.GetSection(nameof(ExternalDepsUrls)));
 
         services.AddTransient<ITimeApi, TimeApi>();
+        services.AddTransient<IEmployeesApi, EmployeesApi>();
+
+        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodHandler>();
+        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodQuery>();
     }
 }

@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using Application.ExternalDeps.TimeApi;
+using Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TourmalineCore.AspNetCore.JwtAuthentication.Core.Filters;
@@ -12,7 +14,7 @@ public class TrackingController : ControllerBase
 {
 
     [EndpointSummary("Get all projects")]
-    [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
+    //[RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("projects")]
     public async Task<TimeGetProjectsResponse> GetAllProjectsAsync(
         [FromServices] ITimeApi timeApi
@@ -23,5 +25,17 @@ public class TrackingController : ControllerBase
         {
             Projects = projects.Projects
         };
+    }
+
+    [EndpointSummary("Get employee projects by period")]
+    [HttpGet("employees-entries-by-project-and-period")]
+    public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
+    [Required][FromQuery] long projectId,
+    [Required][FromQuery] string month,
+    [Required][FromQuery] string year,
+    [FromServices] GetEmployeesEntriesByProjectAndPeriodHandler getEmployeesEntriesByProjectAndPeriodHandler
+)
+    {
+        return await getEmployeesEntriesByProjectAndPeriodHandler.HandleAsync(projectId, month, year);
     }
 }

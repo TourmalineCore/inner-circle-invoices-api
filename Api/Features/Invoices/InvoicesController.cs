@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using Application.ExternalDeps.TimeApi;
-using Application.Features.Tracking.GetEmployeesEntriesByProjectAndPeriod;
+using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TourmalineCore.AspNetCore.JwtAuthentication.Core.Filters;
 
-namespace Api.Features.Tracking;
+namespace Api.Features.Invoices;
 
 [Authorize]
 [ApiController]

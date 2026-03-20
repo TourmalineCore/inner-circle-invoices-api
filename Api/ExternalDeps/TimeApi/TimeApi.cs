@@ -40,7 +40,6 @@ public class TimeApi : ITimeApi
         using var httpClient = new HttpClient()!;
 
         httpClient.DefaultRequestHeaders.Add(headerName, token);
-
         var projects = await httpClient.GetFromJsonAsync<TimeGetProjectsResponse>(link);
 
         return projects!;

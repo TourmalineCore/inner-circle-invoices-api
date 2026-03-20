@@ -10,7 +10,7 @@ namespace Api.Features.Tracking;
 [Authorize]
 [ApiController]
 [Route("api/invoices")]
-public class TrackingController : ControllerBase
+public class InvoicesController : ControllerBase
 {
 
     [EndpointSummary("Get all projects")]

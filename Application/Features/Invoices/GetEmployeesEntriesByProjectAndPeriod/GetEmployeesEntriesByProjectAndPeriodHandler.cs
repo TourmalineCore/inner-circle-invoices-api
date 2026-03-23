@@ -27,27 +27,17 @@ public class GetEmployeesEntriesByProjectAndPeriodHandler
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 
-        var employeesById = employeesList.Employees.ToDictionary(x => x.Id, x=> x.FullName);
-
         var employeesEntriesByProjectAndPeriodResponse = new GetEmployeesEntriesByProjectAndPeriodResponse
         {
-            EmployeesEntries = timeEmployeesEntries.EmployeesEntries
+            EmployeesTrackedTaskHours = timeEmployeesEntries.EmployeesTrackedTaskHours
             .Select(
-                x => new EmployeesEntriesDto
+                x => new EmployeesTrackedTaskHoursDto
                 {
-                    Id = x.employeeId,
-                    Name = employeesById.Single(c => c.Key == x.employeeId).Value,
-                    TrackedHours = (x.endTime - x.startTime).TotalHours
+                    EmployeeId = x.EmployeeId,
+                    Name = EmployeeMapper.MapToEmployeeDto(x.EmployeeId, employeesList)!.FullName,
+                    TrackedHours = x.TrackedHours
                 }
-                )
-            .GroupBy(x => x.Id)
-            .Select(v => new EmployeesEntriesDto 
-            {
-                Id = v.Key,
-                Name = v.First().Name,
-                TrackedHours = v.Sum(x => x.TrackedHours)
-            }
-            ).ToList()
+                ).ToList()
 
         };
 

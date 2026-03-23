@@ -2,13 +2,11 @@ namespace Application.ExternalDeps.TimeApi;
 
 public class TimeGetEmployeesEntriesResponse
 {
-  public required List<TimeEmployeesEntriesDto> EmployeesEntries { get; set; }
+  public required List<TimeEmployeesEntriesDto> EmployeesTrackedTaskHours { get; set; }
 
   public class TimeEmployeesEntriesDto
   {
-    public long employeeId { get; set; }
-
-    public required DateTime startTime { get; set; }
-    public required DateTime endTime { get; set; }
-  }
+        public required long EmployeeId { get; set; }
+        public required double TrackedHours { get; set; }
+    }
 }

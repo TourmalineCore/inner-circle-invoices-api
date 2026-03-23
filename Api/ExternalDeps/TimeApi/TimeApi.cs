@@ -57,7 +57,7 @@ public class TimeApi : ITimeApi
 
         var formattedEndDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss");
 
-        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/employees-entries-by-project?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
+        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
 
         var headerName = _authenticationOptions.IsDebugTokenEnabled
           ? "X-DEBUG-TOKEN"

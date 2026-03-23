@@ -10,8 +10,6 @@ public class EmployeesResponse
 
         public required string FullName { get; set; }
 
-        public required string CorporateEmail { get; set; }
-
         public long TenantId { get; set; }
     }
 }

@@ -46,3 +46,20 @@ Feature: Invoices Entries
     }
     """
     Then status 200
+
+    # Get employee's time entries
+    Given url apiRootUrl
+    Given path 'invoices/employees-entries-by-project-and-period'
+    And param year = 2026
+    And param month = 3
+    And param projectId = 2
+    When method GET
+    And match response.employeesEntries contains
+    """
+    {
+      "id": 2,
+      "name": "Name Name Name",
+      "trackedHours": 0.5
+    }
+    """
+    Then status 200

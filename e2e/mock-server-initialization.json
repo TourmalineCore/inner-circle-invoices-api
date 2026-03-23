@@ -100,5 +100,40 @@
         ]
       }
     }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/time/internal/employees-entries-by-project",
+      "queryStringParameters": [
+        {
+          "name": "projectId",
+          "values": [
+            "2"
+          ]
+        },
+        {
+          "name": "startDate",
+          "values": [
+            "2026-03-01T00:00:00"
+          ]
+        },
+        {
+          "name": "endDate",
+          "values": [
+            "2026-04-01T00:00:00"
+          ]
+        }
+      ]
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"employeesEntries\":[{\"employeeId\":2,\"startTime\":\"2026-03-17T13:00:00\",\"endTime\":\"2026-03-17T13:15:00\"},{\"employeeId\":2,\"startTime\":\"2026-03-19T10:45:00\",\"endTime\":\"2026-03-19T11:00:00\"}]}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
   }
 ]

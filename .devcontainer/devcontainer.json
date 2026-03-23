@@ -11,9 +11,9 @@
 	"service": "dotnet-sdk-with-karate",
 	// https://github.com/microsoft/vscode-remote-release/issues/5795#issuecomment-2518255296
 	// it is not possible to pass a profile name MockForDevelopment thus we need to hadrcode here services that need to be run as part of Dev Container
-	// "runServices": [
-	// 	"inner-circle-invoices-api-mock-server"
-	// ],
+	"runServices": [
+		"inner-circle-invoices-api-mock-server"
+	],
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"features": {
 		// this is needed to be able to call Host OS Docker (DooD)
@@ -77,12 +77,17 @@
 	},
 	// need to open the API, DB, and MockServer ports to be able to open them using Host OS localhost
 	"forwardPorts": [
-		4508
+		4508,
+		8508
 	],
 	"portsAttributes": {
 		"4508": {
 			"label": "VSCode Dev Container API Running Port",
 			"requireLocalPort": true
-		}
+		},
+		"8508": {
+			"label": "VSCode Dev Container MockServer Running Port",
+			"requireLocalPort": true
+		},
 	}
 }

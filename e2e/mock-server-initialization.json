@@ -9,43 +9,7 @@
     },
     "httpResponse": {
       "statusCode": 200,
-      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWxAbWFpbC5ydSIsImNvcnBvcmF0ZUVtYWlsIjoibWFpbEBtYWlsLnJ1IiwidGVuYW50SWQiOiIxIiwiYWNjb3VudElkIjoiMyIsImVtcGxveWVlSWQiOiIyIiwicGVybWlzc2lvbnMiOlsiQ2FuTWFuYWdlUGVyc29uYWxUaW1lVHJhY2tlciIsICJBVVRPX1RFU1RTX09OTFlfSXNFbnRyaWVzSGFyZERlbGV0ZUFsbG93ZWQiXX0=\" }}",
-      "headers": {
-        "Content-Type": [
-          "application/json"
-        ]
-      }
-    }
-  },
-  {
-    "httpRequest": {
-      "method": "POST",
-      "path": "/api/auth/login",
-      "body": {
-        "login": "AUTH_SLYTHERINE_TENANT_SEVERUS_SNAPE_LOGIN_WITH_ALL_PERMISSIONS"
-      }
-    },
-    "httpResponse": {
-      "statusCode": 200,
-      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWxAbWFpbC5ydSIsImNvcnBvcmF0ZUVtYWlsIjoibWFpbEBtYWlsLnJ1IiwidGVuYW50SWQiOiIxIiwiYWNjb3VudElkIjoiNCIsImVtcGxveWVlSWQiOiIzIiwicGVybWlzc2lvbnMiOlsiQ2FuTWFuYWdlUGVyc29uYWxUaW1lVHJhY2tlciIsICJBVVRPX1RFU1RTX09OTFlfSXNFbnRyaWVzSGFyZERlbGV0ZUFsbG93ZWQiXX0=\" }}",
-      "headers": {
-        "Content-Type": [
-          "application/json"
-        ]
-      }
-    }
-  },
-  {
-    "httpRequest": {
-      "method": "POST",
-      "path": "/api/auth/login",
-      "body": {
-        "login": "AUTH_RAVENCLAW_TENANT_CHO_CHANG_LOGIN_WITH_ALL_PERMISSIONS"
-      }
-    },
-    "httpResponse": {
-      "statusCode": 200,
-      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWwyQG1haWwucnUiLCJjb3Jwb3JhdGVFbWFpbCI6Im1haWxAbWFpbC5ydSIsInRlbmFudElkIjoiMiIsImFjY291bnRJZCI6IjQiLCJlbXBsb3llZUlkIjoiMyIsInBlcm1pc3Npb25zIjpbIkNhbk1hbmFnZVBlcnNvbmFsVGltZVRyYWNrZXIiLCAiQVVUT19URVNUU19PTkxZX0lzRW50cmllc0hhcmREZWxldGVBbGxvd2VkIl19\" }}",
+      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWxAbWFpbC5ydSIsImNvcnBvcmF0ZUVtYWlsIjoibWFpbEBtYWlsLnJ1IiwidGVuYW50SWQiOiIxIiwiYWNjb3VudElkIjoiMyIsImVtcGxveWVlSWQiOiIyIiwicGVybWlzc2lvbnMiOlsiQ2FuVmlld0ludm9pY2VzIl19\" }}",
       "headers": {
         "Content-Type": [
           "application/json"

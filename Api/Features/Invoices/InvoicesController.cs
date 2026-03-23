@@ -3,6 +3,7 @@ using Application.ExternalDeps.TimeApi;
 using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TourmalineCore.AspNetCore.JwtAuthentication.Core.Filters;
 
 namespace Api.Features.Invoices;
 
@@ -13,7 +14,7 @@ public class InvoicesController : ControllerBase
 {
 
     [EndpointSummary("Get all projects")]
-    //[RequiresPermission(UserClaimsProvider.CanViewInvoices)]
+    [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("projects")]
     public async Task<TimeGetProjectsResponse> GetAllProjectsAsync(
         [FromServices] ITimeApi timeApi
@@ -27,6 +28,7 @@ public class InvoicesController : ControllerBase
     }
 
     [EndpointSummary("Get employee projects by period")]
+    [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("employees-entries-by-project-and-period")]
     public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
     [Required][FromQuery] long projectId,

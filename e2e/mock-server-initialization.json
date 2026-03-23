@@ -85,5 +85,20 @@
         ]
       }
     }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/time/internal/projects"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{ \"projects\": [{ \"id\": 1, \"name\": \"Project1\" }, { \"id\": 2, \"name\" :\" Project2\" }]}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
   }
 ]

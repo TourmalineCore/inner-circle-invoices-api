@@ -47,17 +47,13 @@ public class TimeApi : ITimeApi
 
     public async Task<TimeGetEmployeesEntriesResponse> GetAllEmployeesEntries(long projectId, string month, string year)
     {
-        // This is needed to automatically increment month
-        // If we increment month manually, that is month+1, then in case of December(12), it will be incremented from 12 to 13
-        var startDate = DateTime.Parse($"{year}-{month}-01T00:00:00");
+        var startDate = DateOnly.Parse($"{year}-{month}-01");
 
-        var endDate = startDate.AddMonths(1);
+        var lastDayOfMonth = DateTime.DaysInMonth(int.Parse(year), int.Parse(month));
 
-        var formattedStartDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss");
+        var endDate = DateOnly.Parse($"{year}-{month}-{lastDayOfMonth}");
 
-        var formattedEndDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss");
-
-        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
+        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={startDate}&endDate={endDate}";
 
         var headerName = _authenticationOptions.IsDebugTokenEnabled
           ? "X-DEBUG-TOKEN"

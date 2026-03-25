@@ -53,7 +53,11 @@ public class TimeApi : ITimeApi
 
         var endDate = DateOnly.Parse($"{year}-{month}-{lastDayOfMonth}");
 
-        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={startDate}&endDate={endDate}";
+        var formattedStartDate = startDate.ToString("yyyy-MM-dd");
+
+        var formattedEndDate = endDate.ToString("yyyy-MM-dd");
+
+        var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
 
         var headerName = _authenticationOptions.IsDebugTokenEnabled
           ? "X-DEBUG-TOKEN"

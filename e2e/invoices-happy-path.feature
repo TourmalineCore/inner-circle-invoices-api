@@ -19,8 +19,8 @@ Feature: Invoices Entries
     And request
     """
     {
-    "login": "#(authSlytherineTenantDracoLoginWithAllPermissions)",
-    "password": "#(authSlytherineTenantDracoPasswordWithAllPermissions)"
+      "login": "#(authSlytherineTenantDracoLoginWithAllPermissions)",
+      "password": "#(authSlytherineTenantDracoPasswordWithAllPermissions)"
     }
     """
     And method POST
@@ -34,32 +34,30 @@ Feature: Invoices Entries
     Given url apiRootUrl
     Given path 'invoices/projects'
     When method GET
+    Then status 200
     And match response.projects contains
     """
     {
-    "id": 1,
-    "name": "Project1"
+      "id": 1,
+      "name": "Project1"
     },
     {
-    "id": 2,
-    "name": "Project2"
+      "id": 2,
+      "name": "Project2"
     }
     """
-    Then status 200
 
     # Get employee's time entries
     Given url apiRootUrl
     Given path 'invoices/employees-entries-by-project-and-period'
-    And param year = 2026
-    And param month = 3
-    And param projectId = 2
+    And params { year: "2026", month: "3", projectId: "2" }
     When method GET
-    And match response.employeesEntries contains
+    Then status 200
+    And match response.employeesTrackedTaskHours contains
     """
     {
-    "id": 2,
-    "name": "Name Name Name",
-    "trackedHours": 0.5
+      "employeeId": 2,
+      "name": "Name Name Name",
+      "trackedHours": 0.5
     }
     """
-    Then status 200

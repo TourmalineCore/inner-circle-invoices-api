@@ -12,7 +12,6 @@ namespace Api.Features.Invoices;
 [Route("api/invoices")]
 public class InvoicesController : ControllerBase
 {
-
     [EndpointSummary("Get all projects")]
     [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("projects")]
@@ -31,11 +30,11 @@ public class InvoicesController : ControllerBase
     [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("employees-entries-by-project-and-period")]
     public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
-    [Required][FromQuery] long projectId,
-    [Required][FromQuery] string month,
-    [Required][FromQuery] string year,
-    [FromServices] GetEmployeesEntriesByProjectAndPeriodHandler getEmployeesEntriesByProjectAndPeriodHandler
-)
+        [Required][FromQuery] long projectId,
+        [Required][FromQuery] string month,
+        [Required][FromQuery] string year,
+        [FromServices] GetEmployeesEntriesByProjectAndPeriodHandler getEmployeesEntriesByProjectAndPeriodHandler
+    )
     {
         return await getEmployeesEntriesByProjectAndPeriodHandler.HandleAsync(projectId, month, year);
     }

@@ -1,4 +1,9 @@
-﻿using Application;
+﻿using Api.ExternalDeps.EmployeesApi;
+using Api.ExternalDeps.TimeApi;
+using Application;
+using Application.ExternalDeps.EmployeesApi;
+using Application.ExternalDeps.TimeApi;
+using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 namespace Api;
 

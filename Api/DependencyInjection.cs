@@ -11,5 +11,13 @@ public static class DependencyInjection
         services.AddHttpContextAccessor();
 
         services.AddScoped<IClaimsProvider, HttpContextClaimsProvider>();
+
+        services.Configure<ExternalDepsUrls>(configuration.GetSection(nameof(ExternalDepsUrls)));
+
+        services.AddTransient<ITimeApi, TimeApi>();
+        services.AddTransient<IEmployeesApi, EmployeesApi>();
+
+        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodHandler>();
+        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodQuery>();
     }
 }

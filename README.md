@@ -1,9 +1,9 @@
 # inner-circle-invoices-api
 
 <!-- auto-generated -->
-[![coverage](https://img.shields.io/badge/e2e_coverage-43.95%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
+[![coverage](https://img.shields.io/badge/e2e_coverage-44.13%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
 [![coverage](https://img.shields.io/badge/units_coverage-0.00%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
-[![coverage](https://img.shields.io/badge/full_coverage-42.75%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
+[![coverage](https://img.shields.io/badge/full_coverage-42.91%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
 <!-- auto-generated -->
 
 This repo contains Inner Circle Invoices API.

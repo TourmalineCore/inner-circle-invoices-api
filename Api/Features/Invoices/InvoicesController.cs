@@ -20,6 +20,7 @@ public class InvoicesController : ControllerBase
     )
     {
         var projectsResponse = await timeApi.GetAllProjects();
+
         return new TimeGetProjectsResponse
         {
             Projects = projectsResponse.Projects

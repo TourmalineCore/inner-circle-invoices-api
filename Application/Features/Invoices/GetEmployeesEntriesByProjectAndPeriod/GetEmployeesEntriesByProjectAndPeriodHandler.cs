@@ -5,16 +5,16 @@ namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 public class GetEmployeesEntriesByProjectAndPeriodHandler
 {
-    private readonly GetEmployeesEntriesByProjectAndPeriodQuery _getEmployeesEntriesByProjectAndPeriodQuery;
     private readonly IEmployeesApi _employeesApi;
+    private readonly ITimeApi _timeApi;
 
     public GetEmployeesEntriesByProjectAndPeriodHandler(
         IEmployeesApi employeesApi,
-        GetEmployeesEntriesByProjectAndPeriodQuery getEmployeesEntriesByProjectAndPeriodQuery
+        ITimeApi timeApi
     )
     {
         _employeesApi = employeesApi;
-        _getEmployeesEntriesByProjectAndPeriodQuery = getEmployeesEntriesByProjectAndPeriodQuery;
+        _timeApi = timeApi;
     }
 
     public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> HandleAsync(
@@ -23,22 +23,20 @@ public class GetEmployeesEntriesByProjectAndPeriodHandler
         string year
     )
     {
-        var timeEmployeesEntries = await _getEmployeesEntriesByProjectAndPeriodQuery.GetEmployeesEntriesByProjectAndPeriodAsync<TimeGetEmployeesEntriesResponse>(projectId, month, year);
+        var timeEmployeesEntries = await _timeApi.GetAllEmployeesEntries(projectId, month, year);
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 
         var employeesEntriesByProjectAndPeriodResponse = new GetEmployeesEntriesByProjectAndPeriodResponse
         {
             EmployeesTrackedTaskHours = timeEmployeesEntries.EmployeesTrackedTaskHours
-            .Select(
-                x => new EmployeesTrackedTaskHoursDto
+                .Select(x => new EmployeesTrackedTaskHoursDto
                 {
                     EmployeeId = x.EmployeeId,
                     Name = EmployeeMapper.MapToEmployeeDto(x.EmployeeId, employeesList)!.FullName,
                     TrackedHours = x.TrackedHours
-                }
-                ).ToList()
-
+                })
+                .ToList()
         };
 
         return employeesEntriesByProjectAndPeriodResponse;

@@ -23,6 +23,5 @@ public static class DependencyInjection
         services.AddTransient<IEmployeesApi, EmployeesApi>();
 
         services.AddTransient<GetEmployeesEntriesByProjectAndPeriodHandler>();
-        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodQuery>();
     }
 }

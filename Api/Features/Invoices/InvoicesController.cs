@@ -29,13 +29,13 @@ public class InvoicesController : ControllerBase
     [EndpointSummary("Get employee projects by period")]
     [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("employees-entries-by-project-and-period")]
-    public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
+    public Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
         [Required][FromQuery] long projectId,
         [Required][FromQuery] string month,
         [Required][FromQuery] string year,
         [FromServices] GetEmployeesEntriesByProjectAndPeriodHandler getEmployeesEntriesByProjectAndPeriodHandler
     )
     {
-        return await getEmployeesEntriesByProjectAndPeriodHandler.HandleAsync(projectId, month, year);
+        return getEmployeesEntriesByProjectAndPeriodHandler.HandleAsync(projectId, month, year);
     }
 }

@@ -10,6 +10,28 @@
  * ---------------------------------------------------------------
  */
 
+export interface EmployeesTrackedTaskHoursDto {
+  /** @format int64 */
+  employeeId: number;
+  name: string;
+  /** @format double */
+  trackedHours: number;
+}
+
+export interface GetEmployeesEntriesByProjectAndPeriodResponse {
+  employeesTrackedTaskHours: EmployeesTrackedTaskHoursDto[];
+}
+
+export interface TimeGetProjectsResponse {
+  projects: TimeProjectsDto[];
+}
+
+export interface TimeProjectsDto {
+  /** @format int64 */
+  id?: number;
+  name: string;
+}
+
 import type {
   AxiosInstance,
   AxiosRequestConfig,
@@ -192,4 +214,47 @@ export class HttpClient<SecurityDataType = unknown> {
  */
 export class Api<
   SecurityDataType extends unknown,
-> extends HttpClient<SecurityDataType> {}
+> extends HttpClient<SecurityDataType> {
+  api = {
+    /**
+     * No description
+     *
+     * @tags Invoices
+     * @name InvoicesGetAllProjects
+     * @summary Get all projects
+     * @request GET:/api/invoices/projects
+     */
+    invoicesGetAllProjects: (params: RequestParams = {}) =>
+      this.request<TimeGetProjectsResponse, any>({
+        path: `/api/invoices/projects`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Invoices
+     * @name InvoicesGetAllEmployeesEntriesByProjectAndPeriod
+     * @summary Get employee projects by period
+     * @request GET:/api/invoices/employees-entries-by-project-and-period
+     */
+    invoicesGetAllEmployeesEntriesByProjectAndPeriod: (
+      query: {
+        /** @format int64 */
+        projectId: number;
+        month: string;
+        year: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<GetEmployeesEntriesByProjectAndPeriodResponse, any>({
+        path: `/api/invoices/employees-entries-by-project-and-period`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
+}

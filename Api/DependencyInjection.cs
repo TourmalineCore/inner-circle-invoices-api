@@ -3,6 +3,7 @@ using Api.ExternalDeps.TimeApi;
 using Application;
 using Application.ExternalDeps.EmployeesApi;
 using Application.ExternalDeps.TimeApi;
+using Application.Features.Invoices.GetAllProjects;
 using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 
 namespace Api;
@@ -23,5 +24,6 @@ public static class DependencyInjection
         services.AddTransient<IEmployeesApi, EmployeesApi>();
 
         services.AddTransient<GetEmployeesEntriesByProjectAndPeriodHandler>();
+        services.AddTransient<GetAllProjectsHandler>();
     }
 }

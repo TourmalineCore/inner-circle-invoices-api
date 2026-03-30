@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Application.ExternalDeps.TimeApi;
+using Application.Features.Invoices.GetAllProjects;
 using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,16 +16,11 @@ public class InvoicesController : ControllerBase
     [EndpointSummary("Get all projects")]
     [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
     [HttpGet("projects")]
-    public async Task<TimeGetProjectsResponse> GetAllProjectsAsync(
-        [FromServices] ITimeApi timeApi
+    public Task<GetAllProjectsResponse> GetAllProjectsAsync(
+        [FromServices] GetAllProjectsHandler getAllProjectsHandler
     )
     {
-        var projectsResponse = await timeApi.GetAllProjects();
-
-        return new TimeGetProjectsResponse
-        {
-            Projects = projectsResponse.Projects
-        };
+        return getAllProjectsHandler.HandleAsync();
     }
 
     [EndpointSummary("Get employee projects by period")]

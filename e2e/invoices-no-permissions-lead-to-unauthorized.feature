@@ -1,11 +1,11 @@
-Feature: Task Entries
+Feature: Invoices
     # https://github.com/karatelabs/karate/issues/1191
     # https://github.com/karatelabs/karate?tab=readme-ov-file#karate-fork
 
   Background:
     * header Content-Type = 'application/json'
 
-  Scenario: No Permissions Lead to Unauthorized for Task Entries Endpoints
+  Scenario: No Permissions Lead to Unauthorized for Invoices Endpoints
 
     * def jsUtils = read('./js-utils.js')
     * def authApiRootUrl = jsUtils().getEnvVariable('AUTH_API_ROOT_URL')

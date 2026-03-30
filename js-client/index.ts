@@ -18,15 +18,15 @@ export interface EmployeesTrackedTaskHoursDto {
   trackedHours: number;
 }
 
+export interface GetAllProjectsResponse {
+  projects: ProjectDto[];
+}
+
 export interface GetEmployeesEntriesByProjectAndPeriodResponse {
   employeesTrackedTaskHours: EmployeesTrackedTaskHoursDto[];
 }
 
-export interface TimeGetProjectsResponse {
-  projects: TimeProjectsDto[];
-}
-
-export interface TimeProjectsDto {
+export interface ProjectDto {
   /** @format int64 */
   id?: number;
   name: string;
@@ -225,7 +225,7 @@ export class Api<
      * @request GET:/api/invoices/projects
      */
     invoicesGetAllProjects: (params: RequestParams = {}) =>
-      this.request<TimeGetProjectsResponse, any>({
+      this.request<GetAllProjectsResponse, any>({
         path: `/api/invoices/projects`,
         method: "GET",
         format: "json",

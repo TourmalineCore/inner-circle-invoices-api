@@ -28,7 +28,9 @@ jobs:
             helmfile cache cleanup && helmfile apply --suppress-diff --namespace "${{ secrets.INNER_CIRCLE_PROD_NAMESPACE }}" -f ci/helmfile.yaml \
             --state-values-set image.tag="${{ env.SEMVER_VERSION }}" \
             --state-values-set ingress.hostname="${{ secrets.INNER_CIRCLE_PROD_HOSTNAME }}" \
-            --state-values-set extraSecretEnvVars.AuthenticationOptions__PublicSigningKey="${{ secrets.INNER_CIRCLE_PROD_PUBLIC_SIGNING_KEY }}" > /dev/null 2>&1
+            --state-values-set extraSecretEnvVars.AuthenticationOptions__PublicSigningKey="${{ secrets.INNER_CIRCLE_PROD_PUBLIC_SIGNING_KEY }}" \
+            --state-values-set extraConfigMapEnvVars.ExternalDepsUrls__EmployeesApiRootUrl="${{ secrets.INNER_CIRCLE_PROD_EMPLOYEES_API_ROOT_URL }}" > \
+            --state-values-set extraConfigMapEnvVars.ExternalDepsUrls__TimeApiRootUrl="${{ secrets.INNER_CIRCLE_PROD_TIME_API_ROOT_URL }}" > /dev/null 2>&1
 
   run-e2e-tests:
     uses: ./.github/workflows/.reusable-e2e-tests-against-prod.yml

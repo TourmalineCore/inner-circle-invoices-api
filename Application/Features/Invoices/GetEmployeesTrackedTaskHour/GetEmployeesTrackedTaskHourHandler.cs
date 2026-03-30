@@ -23,7 +23,7 @@ public class GetEmployeesTrackedTaskHoursHandler
         string year
     )
     {
-        var timeEmployeesTrackedTaskHours = await _timeApi.GetEmployeesTrackedTaskHours(projectId, month, year);
+        var timeEmployeesTrackedTaskHours = await _timeApi.GetEmployeesTrackedTaskHoursAsync(projectId, month, year);
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 

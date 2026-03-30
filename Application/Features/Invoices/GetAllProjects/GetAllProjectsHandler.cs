@@ -15,7 +15,7 @@ public class GetAllProjectsHandler
 
     public async Task<GetAllProjectsResponse> HandleAsync()
     {
-        var projectsResponse = await _timeApi.GetAllProjects();
+        var projectsResponse = await _timeApi.GetAllProjectsAsync();
 
         return new GetAllProjectsResponse
         {

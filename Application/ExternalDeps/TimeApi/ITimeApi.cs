@@ -2,7 +2,7 @@ namespace Application.ExternalDeps.TimeApi;
 
 public interface ITimeApi
 {
-    Task<TimeGetAllProjectsResponse> GetAllProjects();
+    Task<TimeGetAllProjectsResponse> GetAllProjectsAsync();
 
-    Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHours(long projectId, string month, string year);
+    Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(long projectId, string month, string year);
 }

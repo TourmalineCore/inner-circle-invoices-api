@@ -21,7 +21,7 @@ public class TimeApi : ITimeApi
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<TimeGetAllProjectsResponse> GetAllProjects()
+    public async Task<TimeGetAllProjectsResponse> GetAllProjectsAsync()
     {
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects";
 
@@ -45,7 +45,7 @@ public class TimeApi : ITimeApi
         return projects!;
     }
 
-    public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHours(long projectId, string month, string year)
+    public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(long projectId, string month, string year)
     {
         var startDate = DateOnly.Parse($"{year}-{month}-01");
 

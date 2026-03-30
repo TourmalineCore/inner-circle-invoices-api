@@ -27,8 +27,8 @@ public class InvoicesController : ControllerBase
     [HttpGet("employees-tracked-task-hours")]
     public Task<GetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(
         [Required][FromQuery] long projectId,
-        [Required][FromQuery] string month,
-        [Required][FromQuery] string year,
+        [Required][FromQuery] int month,
+        [Required][FromQuery] int year,
         [FromServices] GetEmployeesTrackedTaskHoursHandler getEmployeesTrackedTaskHoursHandler
     )
     {

@@ -47,13 +47,13 @@ public class TimeApi : ITimeApi
 
     public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(
         long projectId,
-        string month,
-        string year
+        int month,
+        int year
     )
     {
         var startDate = DateOnly.Parse($"{year}-{month}-01");
 
-        var lastDayOfMonth = DateTime.DaysInMonth(int.Parse(year), int.Parse(month));
+        var lastDayOfMonth = DateTime.DaysInMonth(year, month);
 
         var endDate = DateOnly.Parse($"{year}-{month}-{lastDayOfMonth}");
 

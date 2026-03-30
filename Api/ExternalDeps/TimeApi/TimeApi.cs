@@ -45,7 +45,11 @@ public class TimeApi : ITimeApi
         return projects!;
     }
 
-    public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(long projectId, string month, string year)
+    public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(
+        long projectId,
+        string month,
+        string year
+    )
     {
         var startDate = DateOnly.Parse($"{year}-{month}-01");
 

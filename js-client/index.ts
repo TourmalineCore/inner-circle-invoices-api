@@ -28,7 +28,7 @@ export interface GetEmployeesTrackedTaskHoursResponse {
 
 export interface ProjectDto {
   /** @format int64 */
-  id?: number;
+  id: number;
   name: string;
 }
 

@@ -244,8 +244,10 @@ export class Api<
       query: {
         /** @format int64 */
         projectId: number;
-        month: string;
-        year: string;
+        /** @format int32 */
+        month: number;
+        /** @format int32 */
+        year: number;
       },
       params: RequestParams = {},
     ) =>

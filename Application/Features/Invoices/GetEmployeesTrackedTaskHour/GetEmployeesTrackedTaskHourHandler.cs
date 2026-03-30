@@ -23,13 +23,13 @@ public class GetEmployeesTrackedTaskHoursHandler
         string year
     )
     {
-        var timeEmployeesEntries = await _timeApi.GetAllEmployeesEntries(projectId, month, year);
+        var timeEmployeesTrackedTaskHours = await _timeApi.GetEmployeesTrackedTaskHours(projectId, month, year);
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 
         var employeesTrackedTaskHoursResponse = new GetEmployeesTrackedTaskHoursResponse
         {
-            EmployeesTrackedTaskHours = timeEmployeesEntries.EmployeesTrackedTaskHours
+            EmployeesTrackedTaskHours = timeEmployeesTrackedTaskHours.EmployeesTrackedTaskHours
                 .Select(x => new EmployeesTrackedTaskHoursDto
                 {
                     EmployeeId = x.EmployeeId,

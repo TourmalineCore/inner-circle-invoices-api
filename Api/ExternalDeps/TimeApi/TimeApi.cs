@@ -45,7 +45,7 @@ public class TimeApi : ITimeApi
         return projects!;
     }
 
-    public async Task<TimeGetEmployeesEntriesResponse> GetAllEmployeesEntries(long projectId, string month, string year)
+    public async Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHours(long projectId, string month, string year)
     {
         var startDate = DateOnly.Parse($"{year}-{month}-01");
 
@@ -75,8 +75,8 @@ public class TimeApi : ITimeApi
 
         httpClient.DefaultRequestHeaders.Add(headerName, token);
 
-        var employeesEntries = await httpClient.GetFromJsonAsync<TimeGetEmployeesEntriesResponse>(link);
+        var employeesTrackedTaskHoursEntries = await httpClient.GetFromJsonAsync<TimeGetEmployeesTrackedTaskHoursResponse>(link);
 
-        return employeesEntries!;
+        return employeesTrackedTaskHoursEntries!;
     }
 }

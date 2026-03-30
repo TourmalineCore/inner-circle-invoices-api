@@ -1,6 +1,6 @@
-namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
+namespace Application.Features.Invoices.GetEmployeesTrackedTaskHour;
 
-public class GetEmployeesEntriesByProjectAndPeriodResponse
+public class GetEmployeesTrackedTaskHoursResponse
 {
     public required List<EmployeesTrackedTaskHoursDto> EmployeesTrackedTaskHours { get; set; }
 }

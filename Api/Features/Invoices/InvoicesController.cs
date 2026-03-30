@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Application.ExternalDeps.TimeApi;
 using Application.Features.Invoices.GetAllProjects;
-using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
+using Application.Features.Invoices.GetEmployeesTrackedTaskHour;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TourmalineCore.AspNetCore.JwtAuthentication.Core.Filters;
@@ -23,16 +22,16 @@ public class InvoicesController : ControllerBase
         return getAllProjectsHandler.HandleAsync();
     }
 
-    [EndpointSummary("Get employee projects by period")]
+    [EndpointSummary("Get employees tracked task hours")]
     [RequiresPermission(UserClaimsProvider.CanViewInvoices)]
-    [HttpGet("employees-entries-by-project-and-period")]
-    public Task<GetEmployeesEntriesByProjectAndPeriodResponse> GetAllEmployeesEntriesByProjectAndPeriod(
+    [HttpGet("employees-tracked-task-hours")]
+    public Task<GetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(
         [Required][FromQuery] long projectId,
         [Required][FromQuery] string month,
         [Required][FromQuery] string year,
-        [FromServices] GetEmployeesEntriesByProjectAndPeriodHandler getEmployeesEntriesByProjectAndPeriodHandler
+        [FromServices] GetEmployeesTrackedTaskHoursHandler getEmployeesTrackedTaskHoursHandler
     )
     {
-        return getEmployeesEntriesByProjectAndPeriodHandler.HandleAsync(projectId, month, year);
+        return getEmployeesTrackedTaskHoursHandler.HandleAsync(projectId, month, year);
     }
 }

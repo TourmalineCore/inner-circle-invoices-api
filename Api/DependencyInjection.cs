@@ -4,7 +4,7 @@ using Application;
 using Application.ExternalDeps.EmployeesApi;
 using Application.ExternalDeps.TimeApi;
 using Application.Features.Invoices.GetAllProjects;
-using Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
+using Application.Features.Invoices.GetEmployeesTrackedTaskHour;
 
 namespace Api;
 
@@ -23,7 +23,7 @@ public static class DependencyInjection
         services.AddTransient<ITimeApi, TimeApi>();
         services.AddTransient<IEmployeesApi, EmployeesApi>();
 
-        services.AddTransient<GetEmployeesEntriesByProjectAndPeriodHandler>();
+        services.AddTransient<GetEmployeesTrackedTaskHoursHandler>();
         services.AddTransient<GetAllProjectsHandler>();
     }
 }

@@ -1,7 +1,6 @@
 using Application.ExternalDeps.EmployeesApi;
-using static Application.ExternalDeps.EmployeesApi.EmployeesResponse;
 
-namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod
+namespace Application.Features.Invoices.GetEmployeesTrackedTaskHour
 {
     public class EmployeeMapper
     {

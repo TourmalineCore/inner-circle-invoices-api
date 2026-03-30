@@ -1,14 +1,14 @@
 using Application.ExternalDeps.EmployeesApi;
 using Application.ExternalDeps.TimeApi;
 
-namespace Application.Features.Invoices.GetEmployeesEntriesByProjectAndPeriod;
+namespace Application.Features.Invoices.GetEmployeesTrackedTaskHour;
 
-public class GetEmployeesEntriesByProjectAndPeriodHandler
+public class GetEmployeesTrackedTaskHoursHandler
 {
     private readonly IEmployeesApi _employeesApi;
     private readonly ITimeApi _timeApi;
 
-    public GetEmployeesEntriesByProjectAndPeriodHandler(
+    public GetEmployeesTrackedTaskHoursHandler(
         IEmployeesApi employeesApi,
         ITimeApi timeApi
     )
@@ -17,7 +17,7 @@ public class GetEmployeesEntriesByProjectAndPeriodHandler
         _timeApi = timeApi;
     }
 
-    public async Task<GetEmployeesEntriesByProjectAndPeriodResponse> HandleAsync(
+    public async Task<GetEmployeesTrackedTaskHoursResponse> HandleAsync(
         long projectId,
         string month,
         string year
@@ -27,7 +27,7 @@ public class GetEmployeesEntriesByProjectAndPeriodHandler
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 
-        var employeesEntriesByProjectAndPeriodResponse = new GetEmployeesEntriesByProjectAndPeriodResponse
+        var employeesTrackedTaskHoursResponse = new GetEmployeesTrackedTaskHoursResponse
         {
             EmployeesTrackedTaskHours = timeEmployeesEntries.EmployeesTrackedTaskHours
                 .Select(x => new EmployeesTrackedTaskHoursDto
@@ -39,6 +39,6 @@ public class GetEmployeesEntriesByProjectAndPeriodHandler
                 .ToList()
         };
 
-        return employeesEntriesByProjectAndPeriodResponse;
+        return employeesTrackedTaskHoursResponse;
     }
 }

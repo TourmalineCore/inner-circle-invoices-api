@@ -21,7 +21,7 @@ public class TimeApi : ITimeApi
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<TimeGetProjectsResponse> GetAllProjects()
+    public async Task<TimeGetAllProjectsResponse> GetAllProjects()
     {
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects";
 
@@ -40,7 +40,7 @@ public class TimeApi : ITimeApi
         using var httpClient = new HttpClient()!;
 
         httpClient.DefaultRequestHeaders.Add(headerName, token);
-        var projects = await httpClient.GetFromJsonAsync<TimeGetProjectsResponse>(link);
+        var projects = await httpClient.GetFromJsonAsync<TimeGetAllProjectsResponse>(link);
 
         return projects!;
     }

@@ -33,15 +33,15 @@ jobs:
     needs: [publish-fb-js-client]
     runs-on: ubuntu-24.04
     steps:
-    - name: Check out Time UI
+    - name: Check out Invoices UI
       uses: actions/checkout@v6
       with:
-        repository: TourmalineCore/inner-circle-time-ui
+        repository: TourmalineCore/inner-circle-invoices-ui
 
     - name: Install current commit's js-client and lint to see there are no breaking changes
       run: |
         npm ci
         
-        npm install @tourmalinecore/inner-circle-time-api-js-client@${{ github.event.pull_request.head.sha }} --save
+        npm install @tourmalinecore/inner-circle-invoices-api-js-client@${{ github.event.pull_request.head.sha }} --save
 
         npm run lint

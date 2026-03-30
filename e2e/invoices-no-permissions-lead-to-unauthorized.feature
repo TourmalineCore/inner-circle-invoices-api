@@ -36,6 +36,6 @@ Feature: Task Entries
     Then status 403
 
     Given url apiRootUrl
-    Given path 'invoices/employees-entries-by-project-and-period'
+    Given path 'invoices/employees-tracked-task-hours'
     When method GET
     Then status 403

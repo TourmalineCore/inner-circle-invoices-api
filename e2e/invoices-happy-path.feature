@@ -49,7 +49,7 @@ Feature: Invoices Entries
 
     # Get employee's time entries
     Given url apiRootUrl
-    Given path 'invoices/employees-entries-by-project-and-period'
+    Given path 'invoices/employees-tracked-task-hours'
     And params { year: "2026", month: "3", projectId: "2" }
     When method GET
     Then status 200

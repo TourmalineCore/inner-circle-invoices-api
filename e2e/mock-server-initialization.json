@@ -1,0 +1,53 @@
+[
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "body": {
+        "login": "AUTH_SLYTHERINE_TENANT_DRACO_MALFOY_LOGIN_WITH_ALL_PERMISSIONS"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWxAbWFpbC5ydSIsImNvcnBvcmF0ZUVtYWlsIjoibWFpbEBtYWlsLnJ1IiwidGVuYW50SWQiOiIxIiwiYWNjb3VudElkIjoiMyIsImVtcGxveWVlSWQiOiIyIiwicGVybWlzc2lvbnMiOlsiQ2FuVmlld0ludm9pY2VzIl19\" }}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "body": {
+        "login": "AUTH_SLYTHERINE_TENANT_GREGORY_GOYLE_LOGIN_WITHOUT_PERMISSIONS"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"accessToken\": { \"value\": \"eyJuYW1lSWRlbnRpZmllciI6Im1haWwwQG1haWwucnUiLCJjb3Jwb3JhdGVFbWFpbCI6Im1haWwwQG1haWwucnUiLCJ0ZW5hbnRJZCI6IjEiLCJhY2NvdW50SWQiOiIwIiwiZW1wbG95ZWVJZCI6Ijc3NyIsInBlcm1pc3Npb25zIjpbXX0=\" }}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/employees/internal/get-employees"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "[{ \"id\": 2, \"fullName\": \"Name Name Name\", \"corporateEmail\": \"mail@mail.ru\", \"tenantId\": 1 }]",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
+  }
+]

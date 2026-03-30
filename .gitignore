@@ -1,0 +1,13 @@
+**/bin/*
+**/obj/*
+**/.vs/*
+**.user
+**/lib/*
+
+*Backup.*
+karate.jar
+target/
+connect-plugins/
+
+**/node_modules/**
+**/dist/**

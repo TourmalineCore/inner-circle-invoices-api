@@ -1,5 +1,11 @@
 # inner-circle-invoices-api
 
+<!-- auto-generated -->
+[![coverage](https://img.shields.io/badge/e2e_coverage-71.88%25-yellow)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
+[![coverage](https://img.shields.io/badge/units_coverage-0.00%25-crimson)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
+[![coverage](https://img.shields.io/badge/full_coverage-70.41%25-yellow)](https://github.com/TourmalineCore/inner-circle-invoices-api/actions/workflows/calculate-tests-coverage-on-pull-request.yml)
+<!-- auto-generated -->
+
 This repo contains Inner Circle Invoices API.
 
 This repo and its infrastructure tailored for VSCode/GitHub Codespaces Dev Container centric development experience in Docker to achieve better isolation of the environment as well as its cross-platform support out of the box. 
@@ -14,7 +20,7 @@ More info about the Inner Circle project and its related repos can be found here
 1. Install Docker Desktop (Windows, macOS) or Docker Engine (Linux)
 >Note: It seems like there is Docker Engine for Linux (https://docs.docker.com/desktop/setup/install/linux/ubuntu/).
 2. Install Visual Studio Code.
-3. Install Visual Studio Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Extension.
+3. Install Visual Studio Code [Dev Containers](https://marketplace.visualstudio.com/invoices?itemName=ms-vscode-remote.remote-containers) Extension.
 
 ## Develop in Dev Container
 
@@ -25,7 +31,7 @@ When your Dev Container is ready, the VS Code window will be re-opened. Open a n
 ### Run API
 
 ```cli
-dotnet run --project ./Api
+dotnet run --project ./Api --verbosity detailed
 ```
 
 ### Run Unit and Integrational Tests

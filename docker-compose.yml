@@ -1,0 +1,78 @@
+services:
+
+  inner-circle-invoices-api:
+    container_name: inner-circle-invoices-api
+    profiles:
+      - MockForTests
+      - MockForPullRequest
+    depends_on:
+      inner-circle-invoices-api-mock-server:
+        condition: service_started
+    build:
+      dockerfile: ./Api/Dockerfile
+      context: .
+      args:
+        EXCLUDE_UNIT_TESTS_FROM_BUILD: "true"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=MockForPullRequest
+    ports:
+      - 6508:80
+    networks:
+      - inner-circle-invoices-api-network
+
+  inner-circle-invoices-api-mock-server:
+    container_name: 'inner-circle-invoices-api-mock-server'
+    profiles:
+      - MockForDevelopment
+      - MockForTests
+      - MockForPullRequest
+    image: mockserver/mockserver:5.15.0
+    command: -logLevel INFO
+    ports:
+      - 8508:1080
+    volumes:
+      # this is needed so that we can spin it up from within Dev Container where LOCAL_WORKSPACE_FOLDER is defined and from a simple OS terminal of the repo root
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e/mock-server-initialization.json:/config/mock-server-initialization.json
+    environment:
+      SERVER_PORT: 1080
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/mock-server-initialization.json
+    networks:
+      - inner-circle-invoices-api-network
+
+  inner-circle-invoices-api-karate-tests:
+    container_name: 'inner-circle-invoices-api-karate-tests'
+    profiles:
+      - MockForPullRequest
+    build:
+      dockerfile: ./KarateDockerfile
+      context: ./e2e
+    # service_started is not what we need, we need deps to be healthy and ready, this needs to be implemented in api and mock-server first 
+    depends_on:
+      inner-circle-invoices-api:
+        condition: service_started
+      inner-circle-invoices-api-mock-server:
+        condition: service_started
+    # restart twice in case of not ready db or network failures
+    restart: on-failure:2
+    command: [ "karate", "/karate" ]
+    volumes:
+      # similar to mock-server volumes we need to support both runs: from Dev Container and from OS
+      - ${LOCAL_WORKSPACE_FOLDER:-.}:/karate
+    environment:
+      AUTH_SLYTHERINE_TENANT_DRACO_MALFOY_LOGIN_WITH_ALL_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_DRACO_MALFOY_LOGIN_WITH_ALL_PERMISSIONS"
+      AUTH_SLYTHERINE_TENANT_DRACO_MALFOY_PASSWORD_WITH_ALL_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_DRACO_MALFOY_PASSWORD_WITH_ALL_PERMISSIONS"
+      AUTH_SLYTHERINE_TENANT_SEVERUS_SNAPE_LOGIN_WITH_ALL_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_SEVERUS_SNAPE_LOGIN_WITH_ALL_PERMISSIONS"
+      AUTH_SLYTHERINE_TENANT_SEVERUS_SNAPE_PASSWORD_WITH_ALL_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_SEVERUS_SNAPE_PASSWORD_WITH_ALL_PERMISSIONS"
+      AUTH_RAVENCLAW_TENANT_CHO_CHANG_LOGIN_WITH_ALL_PERMISSIONS: "AUTH_RAVENCLAW_TENANT_CHO_CHANG_LOGIN_WITH_ALL_PERMISSIONS"
+      AUTH_RAVENCLAW_TENANT_CHO_CHANG_PASSWORD_WITH_ALL_PERMISSIONS: "AUTH_RAVENCLAW_TENANT_CHO_CHANG_PASSWORD_WITH_ALL_PERMISSIONS"
+      AUTH_SLYTHERINE_TENANT_GREGORY_GOYLE_LOGIN_WITHOUT_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_GREGORY_GOYLE_LOGIN_WITHOUT_PERMISSIONS"
+      AUTH_SLYTHERINE_TENANT_GREGORY_GOYLE_PASSWORD_WITHOUT_PERMISSIONS: "AUTH_SLYTHERINE_TENANT_GREGORY_GOYLE_PASSWORD_WITHOUT_PERMISSIONS"
+      # here the port is 1080 because it needs to be an internal port, not an external which is 8507 in this case
+      AUTH_API_ROOT_URL: "http://inner-circle-invoices-api-mock-server:1080/api/auth"
+      API_ROOT_URL: "http://inner-circle-invoices-api/api"
+      SHOULD_USE_FAKE_EXTERNAL_DEPENDENCIES: "true"
+    networks:
+      - inner-circle-invoices-api-network
+
+networks:
+  inner-circle-invoices-api-network:

@@ -30,7 +30,7 @@ Feature: Invoices
 
     * configure headers = jsUtils().getAuthHeaders(accessToken)
 
-    # Get employee's projects
+    # Get all projects
     Given url apiRootUrl
     Given path 'invoices/projects'
     When method GET
@@ -47,7 +47,7 @@ Feature: Invoices
     }
     """
 
-    # Get employee's time entries
+    # Get employee's tracked task hours
     Given url apiRootUrl
     Given path 'invoices/employees-tracked-task-hours'
     And params { year: "2026", month: "3", projectId: "2" }

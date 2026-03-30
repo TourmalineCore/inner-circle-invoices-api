@@ -22,7 +22,7 @@ export interface GetAllProjectsResponse {
   projects: ProjectDto[];
 }
 
-export interface GetEmployeesEntriesByProjectAndPeriodResponse {
+export interface GetEmployeesTrackedTaskHoursResponse {
   employeesTrackedTaskHours: EmployeesTrackedTaskHoursDto[];
 }
 
@@ -236,11 +236,11 @@ export class Api<
      * No description
      *
      * @tags Invoices
-     * @name InvoicesGetAllEmployeesEntriesByProjectAndPeriod
-     * @summary Get employee projects by period
-     * @request GET:/api/invoices/employees-entries-by-project-and-period
+     * @name InvoicesGetEmployeesTrackedTaskHours
+     * @summary Get employees tracked task hours
+     * @request GET:/api/invoices/employees-tracked-task-hours
      */
-    invoicesGetAllEmployeesEntriesByProjectAndPeriod: (
+    invoicesGetEmployeesTrackedTaskHours: (
       query: {
         /** @format int64 */
         projectId: number;
@@ -249,8 +249,8 @@ export class Api<
       },
       params: RequestParams = {},
     ) =>
-      this.request<GetEmployeesEntriesByProjectAndPeriodResponse, any>({
-        path: `/api/invoices/employees-entries-by-project-and-period`,
+      this.request<GetEmployeesTrackedTaskHoursResponse, any>({
+        path: `/api/invoices/employees-tracked-task-hours`,
         method: "GET",
         query: query,
         format: "json",

@@ -245,9 +245,9 @@ export class Api<
         /** @format int64 */
         projectId: number;
         /** @format int32 */
-        month: number;
-        /** @format int32 */
         year: number;
+        /** @format int32 */
+        month: number;
       },
       params: RequestParams = {},
     ) =>

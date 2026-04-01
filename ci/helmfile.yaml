@@ -17,3 +17,6 @@ releases:
           hostname: "{{ .StateValues.ingress.hostname }}"
       - extraSecretEnvVars:
           AuthenticationOptions__PublicSigningKey: "{{ .StateValues.extraSecretEnvVars.AuthenticationOptions__PublicSigningKey }}"
+      - extraConfigMapEnvVars:
+          ExternalDepsUrls__EmployeesApiRootUrl: "{{ .StateValues.extraConfigMapEnvVars.ExternalDepsUrls__EmployeesApiRootUrl }}"
+          ExternalDepsUrls__TimeApiRootUrl: "{{ .StateValues.extraConfigMapEnvVars.ExternalDepsUrls__TimeApiRootUrl }}"

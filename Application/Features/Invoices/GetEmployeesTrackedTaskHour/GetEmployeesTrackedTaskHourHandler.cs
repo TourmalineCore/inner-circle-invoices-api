@@ -19,11 +19,11 @@ public class GetEmployeesTrackedTaskHoursHandler
 
     public async Task<GetEmployeesTrackedTaskHoursResponse> HandleAsync(
         long projectId,
-        int month,
-        int year
+        int year,
+        int month
     )
     {
-        var timeEmployeesTrackedTaskHours = await _timeApi.GetEmployeesTrackedTaskHoursAsync(projectId, month, year);
+        var timeEmployeesTrackedTaskHours = await _timeApi.GetEmployeesTrackedTaskHoursAsync(projectId, year, month);
 
         var employeesList = await _employeesApi.GetAllEmployeesAsync();
 

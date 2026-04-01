@@ -27,11 +27,11 @@ public class InvoicesController : ControllerBase
     [HttpGet("employees-tracked-task-hours")]
     public Task<GetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(
         [Required][FromQuery] long projectId,
-        [Required][FromQuery] int month,
         [Required][FromQuery] int year,
+        [Required][FromQuery] int month,
         [FromServices] GetEmployeesTrackedTaskHoursHandler getEmployeesTrackedTaskHoursHandler
     )
     {
-        return getEmployeesTrackedTaskHoursHandler.HandleAsync(projectId, month, year);
+        return getEmployeesTrackedTaskHoursHandler.HandleAsync(projectId, year, month);
     }
 }

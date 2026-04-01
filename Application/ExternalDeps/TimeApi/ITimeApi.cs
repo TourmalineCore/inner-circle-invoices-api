@@ -4,5 +4,5 @@ public interface ITimeApi
 {
     Task<TimeGetAllProjectsResponse> GetAllProjectsAsync();
 
-    Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(long projectId, int month, int year);
+    Task<TimeGetEmployeesTrackedTaskHoursResponse> GetEmployeesTrackedTaskHoursAsync(long projectId, int year, int month);
 }

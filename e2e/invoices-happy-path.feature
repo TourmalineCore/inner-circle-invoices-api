@@ -44,4 +44,4 @@ Feature: Invoices
     And params { year: "1991", month: "3", projectId: "2" }
     When method GET
     Then status 200
-    And assert response.EmployeesTrackedTaskHours.length = 0
+    And assert response.EmployeesTrackedTaskHours.length == 0

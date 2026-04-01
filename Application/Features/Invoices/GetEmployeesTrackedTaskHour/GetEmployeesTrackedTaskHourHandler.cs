@@ -33,7 +33,7 @@ public class GetEmployeesTrackedTaskHoursHandler
                 .Select(x => new EmployeesTrackedTaskHoursDto
                 {
                     EmployeeId = x.EmployeeId,
-                    Name = EmployeeMapper.MapToEmployeeDto(x.EmployeeId, employeesList)!.FullName,
+                    FullName = EmployeeMapper.MapToEmployeeDto(x.EmployeeId, employeesList)!.FullName,
                     TrackedHours = x.TrackedHours
                 })
                 .ToList()

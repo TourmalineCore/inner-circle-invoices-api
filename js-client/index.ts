@@ -13,7 +13,7 @@
 export interface EmployeesTrackedTaskHoursDto {
   /** @format int64 */
   employeeId: number;
-  name: string;
+  fullName: string;
   /** @format double */
   trackedHours: number;
 }

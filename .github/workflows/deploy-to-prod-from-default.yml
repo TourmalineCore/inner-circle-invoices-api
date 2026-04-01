@@ -14,7 +14,7 @@ jobs:
   #   uses: ./.github/workflows/.reusable-docker-build-and-push.yml
 
   deploy-to-prod:
-    needs: [docker-build-and-push]
+    # needs: [docker-build-and-push]
     runs-on: self-hosted
     steps:
       - name: Check out the repo

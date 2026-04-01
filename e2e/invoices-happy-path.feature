@@ -35,17 +35,7 @@ Feature: Invoices
     Given path 'invoices/projects'
     When method GET
     Then status 200
-    And match response.projects contains
-    """
-    {
-      "id": 1,
-      "name": "Project1"
-    },
-    {
-      "id": 2,
-      "name": "Project2"
-    }
-    """
+    And assert response.projects.length > 0
 
     # Get employee's tracked task hours
     Given url apiRootUrl

@@ -38,8 +38,10 @@ Feature: Invoices
     And assert response.projects.length > 0
 
     # Get employee's tracked task hours
+    # We specifically substitute 1991 year for which there is no exact data
     Given url apiRootUrl
     Given path 'invoices/employees-tracked-task-hours'
     And params { year: "1991", month: "3", projectId: "2" }
     When method GET
     Then status 200
+    And assert response.EmployeesTrackedTaskHours.length = 0

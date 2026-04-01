@@ -92,7 +92,7 @@
     },
     "httpResponse": {
       "statusCode": 200,
-      "body": "{\"employeesTrackedTaskHours\":[{\"employeeId\":2,\"trackedHours\":0.5}]}",
+      "body": "{\"employeesTrackedTaskHours\":[]}",
       "headers": {
         "Content-Type": [
           "application/json"

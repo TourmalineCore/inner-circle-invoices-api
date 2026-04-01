@@ -49,5 +49,55 @@
         ]
       }
     }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/time/internal/projects"
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{ \"projects\": [{ \"id\": 1, \"name\": \"Project1\" }, { \"id\": 2, \"name\" :\" Project2\" }]}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/time/internal/projects/tracked-task-hours",
+      "queryStringParameters": [
+        {
+          "name": "projectId",
+          "values": [
+            "2"
+          ]
+        },
+        {
+          "name": "startDate",
+          "values": [
+            "1991-03-01"
+          ]
+        },
+        {
+          "name": "endDate",
+          "values": [
+            "1991-03-31"
+          ]
+        }
+      ]
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": "{\"employeesTrackedTaskHours\":[]}",
+      "headers": {
+        "Content-Type": [
+          "application/json"
+        ]
+      }
+    }
   }
 ]

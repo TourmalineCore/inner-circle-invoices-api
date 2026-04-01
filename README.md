@@ -71,3 +71,4 @@ java -jar /karate.jar .
 Full docs about the allocated ports, reasoning, and the other services bindings in this infrastructre setup are available [here](https://github.com/TourmalineCore/inner-circle-documentation/blob/master/code-style/api-code-style.md#ports).
 
 You can go to `Ports` tab in the `Terminal` parent panel to find available services.
+

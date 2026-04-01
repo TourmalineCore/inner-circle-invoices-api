@@ -37,11 +37,9 @@ Feature: Invoices
     Then status 200
     And assert response.projects.length > 0
 
-    * def firstProjectId = response.projects[0].id
-
     # Get employee's tracked task hours
     Given url apiRootUrl
     Given path 'invoices/employees-tracked-task-hours'
-    And params { year: "1991", month: "1", projectId: "#(firstProjectId)" }
+    And params { year: "1991", month: "3", projectId: "2" }
     When method GET
     Then status 200

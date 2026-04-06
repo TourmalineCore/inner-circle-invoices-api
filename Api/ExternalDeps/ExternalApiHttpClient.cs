@@ -1,12 +1,12 @@
 using Microsoft.Extensions.Options;
 using TourmalineCore.AspNetCore.JwtAuthentication.Core.Options;
 
-public class AuthenticatedHttpClient
+public class ExternalApiHttpClient
 {
     private readonly AuthenticationOptions _authenticationOptions;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AuthenticatedHttpClient(
+    public ExternalApiHttpClient(
         IOptions<AuthenticationOptions> authenticationOptions,
         IHttpContextAccessor httpContextAccessor
     )

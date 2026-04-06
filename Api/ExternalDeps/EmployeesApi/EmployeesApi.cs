@@ -6,22 +6,23 @@ namespace Api.ExternalDeps.EmployeesApi;
 public class EmployeesApi : IEmployeesApi
 {
     private readonly ExternalDepsUrls _externalDepsUrls;
-    private readonly AuthenticatedHttpClient _authenticatedHttpClient;
+
+    private readonly ExternalApiHttpClient _externalApiHttpClient;
 
     public EmployeesApi(
         IOptions<ExternalDepsUrls> externalDepsUrls,
-        AuthenticatedHttpClient authenticatedHttpClient
+        ExternalApiHttpClient externalApiHttpClient
     )
     {
         _externalDepsUrls = externalDepsUrls.Value;
-        _authenticatedHttpClient = authenticatedHttpClient;
+        _externalApiHttpClient = externalApiHttpClient;
     }
 
     public async Task<EmployeesResponse> GetAllEmployeesAsync()
     {
         var link = $"{_externalDepsUrls.EmployeesApiRootUrl}/internal/get-employees";
 
-        var employeesDtos = await _authenticatedHttpClient.GetAsync<List<EmployeeDto>>(link);
+        var employeesDtos = await _externalApiHttpClient.GetAsync<List<EmployeeDto>>(link);
 
         return new EmployeesResponse
         {

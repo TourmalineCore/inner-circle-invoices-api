@@ -7,22 +7,22 @@ public class TimeApi : ITimeApi
 {
     private readonly ExternalDepsUrls _externalDepsUrls;
 
-    private readonly AuthenticatedHttpClient _authenticatedHttpClient;
+    private readonly ExternalApiHttpClient _externalApiHttpClient;
 
     public TimeApi(
         IOptions<ExternalDepsUrls> externalDepsUrls,
-        AuthenticatedHttpClient authenticatedHttpClient
+        ExternalApiHttpClient externalApiHttpClient
     )
     {
         _externalDepsUrls = externalDepsUrls.Value;
-        _authenticatedHttpClient = authenticatedHttpClient;
+        _externalApiHttpClient = externalApiHttpClient;
     }
 
     public async Task<TimeGetAllProjectsResponse> GetAllProjectsAsync()
     {
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects";
 
-        var projects = await _authenticatedHttpClient.GetAsync<TimeGetAllProjectsResponse>(link);
+        var projects = await _externalApiHttpClient.GetAsync<TimeGetAllProjectsResponse>(link);
 
         return projects!;
     }
@@ -45,7 +45,7 @@ public class TimeApi : ITimeApi
 
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
 
-        var employeesTrackedTaskHoursEntries = await _authenticatedHttpClient.GetAsync<TimeGetEmployeesTrackedTaskHoursResponse>(link);
+        var employeesTrackedTaskHoursEntries = await _externalApiHttpClient.GetAsync<TimeGetEmployeesTrackedTaskHoursResponse>(link);
 
         return employeesTrackedTaskHoursEntries!;
     }

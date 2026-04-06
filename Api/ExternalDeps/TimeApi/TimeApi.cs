@@ -1,46 +1,28 @@
 using Application.ExternalDeps.TimeApi;
 using Microsoft.Extensions.Options;
-using TourmalineCore.AspNetCore.JwtAuthentication.Core.Options;
 
 namespace Api.ExternalDeps.TimeApi;
 
 public class TimeApi : ITimeApi
 {
     private readonly ExternalDepsUrls _externalDepsUrls;
-    private readonly AuthenticationOptions _authenticationOptions;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    private readonly ExternalApiHttpClient _externalApiHttpClient;
 
     public TimeApi(
         IOptions<ExternalDepsUrls> externalDepsUrls,
-        IOptions<AuthenticationOptions> authenticationOptions,
-        IHttpContextAccessor httpContextAccessor
+        ExternalApiHttpClient externalApiHttpClient
     )
     {
         _externalDepsUrls = externalDepsUrls.Value;
-        _authenticationOptions = authenticationOptions.Value;
-        _httpContextAccessor = httpContextAccessor;
+        _externalApiHttpClient = externalApiHttpClient;
     }
 
     public async Task<TimeGetAllProjectsResponse> GetAllProjectsAsync()
     {
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects";
 
-        var headerName = _authenticationOptions.IsDebugTokenEnabled
-          ? "X-DEBUG-TOKEN"
-          : "Authorization";
-
-        var token = _httpContextAccessor
-          .HttpContext!
-          .Request
-          .Headers[headerName]
-          .ToString();
-
-        // ToDo improve work with HttpClient
-        // https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/http/httpclient-guidelines
-        using var httpClient = new HttpClient()!;
-
-        httpClient.DefaultRequestHeaders.Add(headerName, token);
-        var projects = await httpClient.GetFromJsonAsync<TimeGetAllProjectsResponse>(link);
+        var projects = await _externalApiHttpClient.GetAsync<TimeGetAllProjectsResponse>(link);
 
         return projects!;
     }
@@ -63,23 +45,7 @@ public class TimeApi : ITimeApi
 
         var link = $"{_externalDepsUrls.TimeApiRootUrl}/internal/projects/tracked-task-hours?projectId={projectId}&startDate={formattedStartDate}&endDate={formattedEndDate}";
 
-        var headerName = _authenticationOptions.IsDebugTokenEnabled
-          ? "X-DEBUG-TOKEN"
-          : "Authorization";
-
-        var token = _httpContextAccessor
-          .HttpContext!
-          .Request
-          .Headers[headerName]
-          .ToString();
-
-        // ToDo improve work with HttpClient
-        // https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/http/httpclient-guidelines
-        using var httpClient = new HttpClient()!;
-
-        httpClient.DefaultRequestHeaders.Add(headerName, token);
-
-        var employeesTrackedTaskHoursEntries = await httpClient.GetFromJsonAsync<TimeGetEmployeesTrackedTaskHoursResponse>(link);
+        var employeesTrackedTaskHoursEntries = await _externalApiHttpClient.GetAsync<TimeGetEmployeesTrackedTaskHoursResponse>(link);
 
         return employeesTrackedTaskHoursEntries!;
     }

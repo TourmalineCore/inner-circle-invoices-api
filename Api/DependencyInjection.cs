@@ -20,6 +20,7 @@ public static class DependencyInjection
 
         services.Configure<ExternalDepsUrls>(configuration.GetSection(nameof(ExternalDepsUrls)));
 
+        services.AddTransient<ExternalApiHttpClient>();
         services.AddTransient<ITimeApi, TimeApi>();
         services.AddTransient<IEmployeesApi, EmployeesApi>();
 

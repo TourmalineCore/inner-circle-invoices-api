@@ -61,6 +61,7 @@
 		"AUTH_API_ROOT_URL": "http://localhost:8508/api/auth",
 		"API_ROOT_URL": "http://localhost:4508/api",
 		"SHOULD_USE_FAKE_EXTERNAL_DEPENDENCIES": "true",
+		"CORS_ALLOWED_ORIGINS": "*",
 		"ENABLE_EXCEPTION_DETAILS": "true"
 	},
 	// this root is needed e.g. in case when you edit files not inly in VSCode in Dev Container but also directly

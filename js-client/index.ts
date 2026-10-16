@@ -209,7 +209,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
 /**
  * @title inner-circle-invoices-api
- * @version 1.1.4
+ * @version 1.1.5
  * @baseUrl http://localhost:6508/
  */
 export class Api<

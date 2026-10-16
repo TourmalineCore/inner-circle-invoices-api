@@ -1,7 +1,5 @@
-using Application;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TourmalineCore.AspNetCore.JwtAuthentication.Core;
 using TourmalineCore.AspNetCore.JwtAuthentication.Core.Options;
 
@@ -51,6 +49,15 @@ public class Program
         builder.Services.AddJwtAuthentication(authenticationOptions).WithUserClaimsProvider<UserClaimsProvider>(UserClaimsProvider.PermissionClaimType);
 
         var app = builder.Build();
+
+        var corsOptions = configuration.GetSection(nameof(CorsOptions)).Get<CorsOptions>();
+
+        app.UseCors(
+            corsPolicyBuilder => corsPolicyBuilder
+                .WithOrigins(corsOptions!.AllowedOrigins)
+                .WithMethods("GET", "POST", "DELETE")
+                .WithHeaders("Authorization", "Content-Type")
+        );
 
         app.UseProblemDetails();
 
